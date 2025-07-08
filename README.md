@@ -1,4 +1,4 @@
-# js1024-shader
+# js1024-shaders
 
 My personal devtool for developing a shader for the [js1024](https://js1024.fun/) contest.
 

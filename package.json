@@ -1,5 +1,5 @@
 {
-  "name": "js1024-shader",
+  "name": "js1024-shaders",
   "module": "dev/index.ts",
   "type": "module",
   "scripts": {
