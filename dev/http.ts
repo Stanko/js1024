@@ -10,16 +10,22 @@ export class HttpServer {
       async fetch(req) {
         try {
           const url = new URL(req.url);
+          const timeParam = new URLSearchParams(url.search).get('time');
+
+          let time = null;
+          if (timeParam !== null && parseFloat(timeParam) > 0) {
+            time = parseFloat(timeParam);
+          }
 
           const handlers: Record<string, () => Promise<Response>> = {
             '/': async () => {
-              const page = await getPage();
+              const page = await getPage(false, time);
               return new Response(page, {
                 headers: { 'Content-Type': 'text/html' },
               });
             },
             '/min.html': async () => {
-              const page = await getPage(true);
+              const page = await getPage(true, time);
               return new Response(page, {
                 headers: { 'Content-Type': 'text/html' },
               });

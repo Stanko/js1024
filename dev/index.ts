@@ -31,7 +31,10 @@ export const minifyShader = async () => {
   }
 };
 
-export const getPage = async (minify: boolean = false) => {
+export const getPage = async (
+  minify: boolean = false,
+  time: number | null = null
+) => {
   await minifyShader();
   const sourceShader = await Bun.file(paths.SHADER).text();
   const minifiedShader = await Bun.file(paths.SHADER_MIN).text();
@@ -42,7 +45,8 @@ export const getPage = async (minify: boolean = false) => {
 
   return html
     .replace(tokens.SHADER, shader)
-    .replace(tokens.MINIFIED_LENGTH, minifiedShader.length.toString());
+    .replace(tokens.MINIFIED_LENGTH, minifiedShader.length.toString())
+    .replace('o += d', time !== null ? time.toString() : 'o += d');
 };
 
 export const serve = () => {
