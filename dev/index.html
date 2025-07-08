@@ -1,0 +1,154 @@
+<!doctype html>
+
+<head>
+  <title>MuffinMan's shader entry ~ js1024</title>
+  <meta name="author" content="Stanko">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    #a {
+      position: relative;
+      width: 100vw;
+      height: 56.25vw;
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+      #a {
+        height: 100vh;
+        width: 177.7vh;
+      }
+    }
+  </style>
+</head>
+
+<body id=b>
+  <canvas id=a></canvas>
+  <script>
+    // Entry configuration
+    // ===================
+
+    var title = "";
+
+    // Shim setup and polyfills (do not edit)
+    // ======================================
+
+    a.width = innerWidth / 2;
+    a.height = a.width / 16 * 9;
+
+    g = a.getContext("webgl");
+    d = document;
+    window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+    onload = function () {
+      for (i in g) {
+        g[i[0] + i[6]] = g[i];
+      }
+      iMouse = [0, 0, 0, 0];
+      with (g) {
+        (oninput = function () {
+          p = cP();
+          sS(s = cS(35633), "attribute vec2 p;void main(){gl_Position=vec4(p,0,1);}");
+          compileShader(s);
+          aS(p, s);
+          sS(s = cS(FN), 'precision mediump float;uniform float iTime,iFrame,iDate,iTimeDelta;varying lowp vec4 fragCoord;uniform vec2 iResolution;uniform vec4 iMouse;' + shader.innerText + 'void main(){mainImage(gl_FragColor,gl_FragCoord.xy);gl_FragColor.w=1.;}');
+          compileShader(s);
+          aS(p, s);
+          lo(p);
+          console.log(g.getShaderInfoLog(s) || 'shader OK');
+          console.log(g.getProgramInfoLog(p) || 'program OK');
+          ug(p);
+          bf(G = 34962, cB());
+          eV(0);
+          vA(0, 2, 5120, 0, 0, 0);
+          bD(G, new Int8Array([-3, 1, 1, -3, 1, 1]), 35044);
+          iFrame = 0;
+          o = 0;
+          f = new Date() / 1e3
+          d = 0;
+          clearColor(0, 0, 0, 1);
+          clear(g.COLOR_BUFFER_BIT);
+        })();
+        (L = function () {
+          d = (new Date() / 1e3 - f);
+          f = new Date() / 1e3;
+          uniform1f(gf(p, "iTimeDelta"), d);
+          uniform1f(gf(p, "iTime"), o += d);
+          uniform1f(gf(p, "iFrame"), iFrame++);
+          uniform1f(gf(p, "iDate"), ~~f);
+          uniform4f(gf(p, "iMouse"), iMouse[0], iMouse[1], iMouse[2], iMouse[3]);
+          uniform2f(gf(p, "iResolution"), a.width, a.height); // uniform2f(gf(p, "iResolution"), innerWidth / 2, innerHeight / 2);
+          dr(6, 0, 3);
+          requestAnimationFrame(L);
+        })();
+      }
+      y = 0;
+      z = 1;
+      onmousedown = onmouseup = function (e) {
+        y ^= 1
+      }
+      a.onmousemove = function (e) {
+        if (y) iMouse[0] = e.pageX * 0.495 * z, iMouse[1] = e.pageY
+      }
+      a.onclick = function (e) {
+        iMouse[2] = e.pageX * 0.495 * z, iMouse[3] = e.pageY
+      }
+    }
+  </script>
+
+  <script id=shader type="x-shader/x-fragment">
+  // Shader inputs:
+  // - iResolution: vec2(w, h)
+  // - iTime: float
+  // - iTimeDelta: float
+  // - iFrame: int
+  // - iMouse: vec4(x, y, clickx, clicky)
+  // - iDate: float
+
+  // ----- SHADER ----- //
+  </script>
+
+  <div class="ui">
+    <nav>
+      <a href="/">Default</a>
+      <span>&bull;</span>
+      <a href="/min.html">Minified</a>
+    </nav>
+    <div class="shader-size"><!-- MINIFIED_LENGTH --></div>
+  </div>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #222;
+    }
+
+    .ui {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: rgb(0 0 0 / 0.5);
+      padding: 6px 8px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      align-items: center;
+    }
+
+    a {
+      color: rgb(131, 124, 140);
+    }
+  </style>
+
+  <script src="/ws-debug.js"></script>
+</body>

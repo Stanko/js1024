@@ -1,0 +1,3 @@
+import { minifyShader } from '.';
+
+minifyShader();

@@ -1,0 +1,15 @@
+{
+  "name": "js1024-shader",
+  "module": "dev/index.ts",
+  "type": "module",
+  "scripts": {
+    "start": "bun ./dev/serve.ts",
+    "build": "bun ./dev/build.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
