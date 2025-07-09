@@ -1,6 +1,6 @@
 # js1024
 
-My personal devtool for developing a shader for the [js1024](https://js1024.fun/) contest. It automatically refreshes when the shader file is updated and shows the sizes of the minified version.
+My personal devtool for developing a shader for the [js1024](https://js1024.fun/) contest. It automatically refreshes when the shader file is updated and shows the size of the minified version.
 
 You can use URL get param time to freeze the shader at specific frame (for example `?time=10.5`).
 
